@@ -2,7 +2,7 @@ class StringCalculator
     #string calculator methods
 
       def self.add(input)
-        return 0 if input.empty?
+        return 0 if input.nil? || input.empty?
 
         numbers_string = input
         custom_delimiter = nil
