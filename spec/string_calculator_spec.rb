@@ -32,5 +32,17 @@ RSpec.describe StringCalculator do
       expect { StringCalculator.add("1,-2,-5,3") }.to raise_error(ArgumentError, "negative numbers not allowed: -2,-5")
     end
 
+    it "custom delimiter ';'" do
+      expect(StringCalculator.add("//;\n1;2;3")).to eq(6)
+    end
+
+    it "custom delimiter '|' with pipe" do
+      expect(StringCalculator.add("//|\n4,5|6")).to eq(15)
+    end
+
+    it "delimiters with ',',';' and \n lets check how it works" do
+        expect(StringCalculator.add("//;\n1,2;3\n4")).to eq(10)
+    end
+
   end
 end
