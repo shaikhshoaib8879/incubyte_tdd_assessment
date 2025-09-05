@@ -12,11 +12,13 @@ class StringCalculator
           custom_delimiter = delimiter_definition[2]
         end
 
-        numbers = if custom_delimiter
-                    numbers_string.split(custom_delimiter)
-                  else
-                    numbers_string.split(",").map { |part| part.split("\n") }.flatten.map(&:to_i)
-                  end
+        delimiters = [",", "\n"]
+        delimiters << custom_delimiter if custom_delimiter
+
+        numbers = [numbers_string]
+        delimiters.each do |delimiter|
+          numbers = numbers.map { |part| part.split(delimiter) }.flatten
+        end
         puts "Numbers: #{numbers.inspect}"
         numbers = numbers.map(&:to_i)
 
