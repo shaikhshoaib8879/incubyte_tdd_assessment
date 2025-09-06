@@ -57,7 +57,7 @@ RSpec.describe StringCalculator do
     end
 
     it "multi-character delimiter" do
-      expect(StringCalculator.add("//[***]\n1***2***3")).to eq(6)
+      expect(StringCalculator.add("//***\n1***2***3")).to eq(6)
     end
 
   end
