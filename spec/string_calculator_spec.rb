@@ -11,6 +11,9 @@ RSpec.describe StringCalculator do
       expect(StringCalculator.add(nil)).to eq(0)
     end
 
+    it "ignores extra commas between numbers" do
+      expect(StringCalculator.add("1,,2,3")).to eq(6)
+    end
 
     it "return given number when single number is given" do
       expect(StringCalculator.add("1")).to eq(1)
@@ -23,6 +26,10 @@ RSpec.describe StringCalculator do
 
     it "return correct sum of two numbers when provided" do
       expect(StringCalculator.add("1,3")).to eq(4)
+    end
+
+    it "return correct sum of multiple numbers when provided" do
+      expect(StringCalculator.add("1,3,5,0,13")).to eq(22)
     end
 
     it "handles new lines as delimiters" do
@@ -47,6 +54,10 @@ RSpec.describe StringCalculator do
 
     it "delimiters with ',',';' and \n lets check how it works" do
         expect(StringCalculator.add("//;\n1,2;3\n4")).to eq(10)
+    end
+
+    it "multi-character delimiter" do
+      expect(StringCalculator.add("//[***]\n1***2***3")).to eq(6)
     end
 
   end
